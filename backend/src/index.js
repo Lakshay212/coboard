@@ -3,6 +3,9 @@ const cors = require('cors');
 const pool = require('./db');
 const authRoutes = require('./routes/auth');  
 const boardRoutes = require('./routes/boards');
+const listRoutes = require('./routes/lists');
+const cardRoutes = require('./routes/cards')
+
 require('dotenv').config();
 
 
@@ -12,6 +15,10 @@ app.use(cors());
 app.use(express.json());
 app.use('/auth', authRoutes);
 app.use('/boards', boardRoutes);
+app.use('/lists', listRoutes);
+app.use('/cards', cardRoutes);
+
+
 
 // Test route
 app.get('/', (req, res) => {
