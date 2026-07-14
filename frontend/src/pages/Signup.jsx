@@ -19,7 +19,14 @@ function Signup() {
     console.error('Signup failed:', err)
   }
 }
-
+const goLogin = async () => {
+  try {
+    navigate('/login')
+    // redirect to dashboard after login
+  } catch (err) {
+    console.error('Error:', err)
+  }
+}
   return (
     <div>
         <h1>Signup</h1>
@@ -34,6 +41,9 @@ function Signup() {
         </div>
         <div>
             <button onClick={handleSubmit}>Log In</button>
+        </div>
+        <div>
+          <a onClick={goLogin}>Already have account</a>
         </div>
     </div>
   )

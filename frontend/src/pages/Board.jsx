@@ -1,9 +1,54 @@
-function Signup() {
+import { useState } from 'react'
+import { useEffect } from 'react'
+import { getBoard,createBoard } from '../api/boards'
+import { getLists,createList} from '../api/lists'
+import { useNavigate,useParams } from 'react-router-dom'
+import List from '../components/List'
+
+
+
+function Board() {
+  const [lists, setLists] =useState([])
+  const [listName, setListName] = useState('')
+  const navigate = useNavigate()
+  const param=useParams();
+  const boardId=param.id;
+  useEffect(()=>{
+    const fetchLists=async ()=>{
+      const data=await getLists(boardId);
+      setLists(data.lists)
+    }
+    fetchLists()
+  },[])
+  const handleCreate = async () => {
+    await createList(boardId,listName)
+    const data=await getLists(boardId);
+    setLists(data.lists)
+    console.log(listName)
+    setListName('')
+  }
   return (
     <div>
-      <h1>Board</h1>
+      <div>
+        <h1>Board</h1>
+      </div>
+
+      <div>
+        <input type="text" id="listName" placeholder='Enter the name of List' value={listName} onChange={(e)=> setListName(e.target.value)}></input>
+        <button onClick={handleCreate}>Add</button>
+      </div>
+      <div>
+        {lists.map((list) => (
+          <List key={list.id} list={list} />
+          // <div key={list.id} >
+          //   <h3>{list.title}</h3>
+          // </div>
+        ))}
+
+      </div>
+
     </div>
   )
 }
 
-export default Signup
+export default Board
