@@ -1,0 +1,29 @@
+.navbar-main{
+    background-color: rgb(3, 3, 101);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.logo-area{
+    color: rgb(233, 231, 231);
+    margin: 0 0 0 20px;
+}
+/* .logout-button{
+    background-color: blue;
+
+    width: 100px;
+    margin: 10px;
+} */
+.logout{
+    background-color: rgb(99, 99, 211);
+    /* width: 100px; */
+    padding: 10px 20px ;
+    margin: 0 30px 0 0;
+    border-radius: 15px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+.logout:hover{
+    background-color: rgb(70, 70, 180);
+}

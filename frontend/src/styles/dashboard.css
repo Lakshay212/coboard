@@ -1,0 +1,57 @@
+.takingInput{
+    margin: 20px 40px 5px 40px;
+    display: flex;
+    
+}
+/* .inputWrapper{
+    margin: 0 20px;
+} */
+.textInput{
+    padding: 10px 10px 10px 10px;
+    width: 400px;
+    border-radius:  20px 0 0 20px ;
+    border: none;
+    border: 1px solid black ;
+}
+.addingBoard{
+    padding: 10px 20px 10px 10px;
+    background-color: rgb(99, 99, 211);
+    color: white;
+    border: none;
+    border-radius: 0 20px 20px 0;
+    border: 1px solid black ;
+    cursor: pointer;
+
+}
+.boards{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 30px;
+}
+.heading {
+  padding: 20px 40px;
+  font-size: 28px;
+  color: #333;
+}
+.board{
+    height: 300px;
+    display: flex;
+    font-size: 30px;
+    width: 300px;
+    border: 1px solid black;
+    justify-content: center;
+    border-radius: 30px;
+    padding: 20px;
+    align-items: center;
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+.board:hover{
+    transform: translateY(-3px);
+}
+.addingBoard:hover{
+    background-color: rgb(70, 70, 180);
+}

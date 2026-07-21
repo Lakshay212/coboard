@@ -4,6 +4,9 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Dashboard from './pages/Dashboard'
 import Board from './pages/Board'
+import './styles/global.css'
+
+
 
 function App() {
   return (
@@ -25,6 +28,7 @@ function App() {
         } />
       </Routes>
     </BrowserRouter>
+    
   )
 }
 
