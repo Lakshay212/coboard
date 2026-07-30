@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { getCards,createCard} from '../api/cards'
+import '../styles/list.css'
+
 
 
 function List({list}) {
@@ -22,18 +24,18 @@ function List({list}) {
     setCardName('')
   }
   return (
-    <div>
+    <div className='list'>
       <div>
-        <h1>{list.title}</h1>
+        <h1 className='ListTitle'>{list.title}</h1>
       </div>
 
-      <div>
-        <input type="text" id="cardname" placeholder='Enter the name of card' value={cardName} onChange={(e)=> setCardName(e.target.value)}></input>
-        <button onClick={handleCreate}>Add</button>
+      <div className='takingCardinput'>
+        <input className='Cardinput' type="text" id="cardname" placeholder='Enter the name of card' value={cardName} onChange={(e)=> setCardName(e.target.value)}></input>
+        <button className='Addcard' onClick={handleCreate}>Add</button>
       </div>
-      <div>
+      <div className='cards'>
         {cards.map((card) => (
-          <div key={card.id} >
+          <div className='card' key={card.id} >
             <h3>{card.title}</h3>
           </div>
         ))}

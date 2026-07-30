@@ -1,0 +1,50 @@
+.list{
+    width: 300px;
+    margin: 15px;
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid black ;
+    padding: 30px;
+    height: 450px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    /* overflow-y: auto; */
+}
+.takingCardinput{
+    display: flex;
+    margin: 10px 10px 10px 0;
+}
+.Cardinput{
+    padding: 5px 5px 5px 10px;
+    width: 400px;
+    border-radius:  20px 0 0 20px ;
+    border: none;
+    border: 1px solid black ;
+}
+.Addcard{
+    padding: 5px 20px 5px 10px;
+    background-color: rgb(99, 99, 211);
+    color: white;
+    border: none;
+    border-radius: 0 20px 20px 0;
+    border: 1px solid black ;
+    cursor: pointer;
+}
+.Addcard:hover{
+    background-color: rgb(70, 70, 180);
+}
+.card {
+    background-color: #f0f2f5;
+    border-radius: 10px;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: transform 0.1s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
