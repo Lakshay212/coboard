@@ -58,11 +58,11 @@ router.get('/:list_id', authenticateToken, async (req, res) => {
 
 router.put('/:id', authenticateToken, async (req, res) => {
   const { id } = req.params;
-  const { title } = req.body;
+  const { title, list_id } = req.body;
   try {
     const updated = await pool.query(
-      'UPDATE cards SET title = $1 WHERE id = $2 RETURNING *',
-      [title, id]
+      'UPDATE cards SET list_id = COALESCE($1, list_id), title = COALESCE($2, title) WHERE id = $3 RETURNING *',
+      [list_id, title, id]
     );
     res.status(200).json({ card: updated.rows[0] });
   } catch (err) {

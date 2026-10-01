@@ -20,3 +20,8 @@ export const createCard = async (listId, title) => {
   const response = await API.post('/cards', { list_id: listId, title, position: 1 })
   return response.data
 }
+
+export const updateCardList = async (cardId, newListId) => {
+  const response = await API.put(`/cards/${cardId}`, { list_id: newListId })
+  return response.data
+}

@@ -1,47 +1,72 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { getCards,createCard} from '../api/cards'
+import { getCards, createCard } from '../api/cards'
 import '../styles/list.css'
+import { Droppable, Draggable } from '@hello-pangea/dnd'
 
-
-
-function List({list}) {
-  const [cards, setCards] =useState([])
+function List({ list }) {
+  const [cards, setCards] = useState([])
   const [cardName, setCardName] = useState('')
-  
-  useEffect(()=>{
-    const fetchCards=async ()=>{
-      const data=await getCards(list.id);
+
+  useEffect(() => {
+    const fetchCards = async () => {
+      const data = await getCards(list.id)
       setCards(data.cards)
     }
     fetchCards()
-  },[])
+  }, [])
+
   const handleCreate = async () => {
-    await createCard(list.id,cardName)
-    const data=await getCards(list.id);
+    await createCard(list.id, cardName)
+    const data = await getCards(list.id)
     setCards(data.cards)
-    console.log(cardName)
     setCardName('')
   }
+
   return (
     <div className='list'>
-      <div>
-        <h1 className='ListTitle'>{list.title}</h1>
-      </div>
+      <h1 className='ListTitle'>{list.title}</h1>
 
       <div className='takingCardinput'>
-        <input className='Cardinput' type="text" id="cardname" placeholder='Enter the name of card' value={cardName} onChange={(e)=> setCardName(e.target.value)}></input>
+        <input
+          className='Cardinput'
+          type="text"
+          placeholder='Enter the name of card'
+          value={cardName}
+          onChange={(e) => setCardName(e.target.value)}
+        />
         <button className='Addcard' onClick={handleCreate}>Add</button>
       </div>
-      <div className='cards'>
-        {cards.map((card) => (
-          <div className='card' key={card.id} >
-            <h3>{card.title}</h3>
+
+      <Droppable droppableId={String(list.id)}>
+        {(provided) => (
+          <div
+            className='cards'
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+          >
+            {cards.map((card, index) => (
+              <Draggable
+                key={card.id}
+                draggableId={String(card.id)}
+                index={index}
+              >
+                {(provided) => (
+                  <div
+                    className='card'
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                  >
+                    {card.title}
+                  </div>
+                )}
+              </Draggable>
+            ))}
+            {provided.placeholder}
           </div>
-        ))}
-
-      </div>
-
+        )}
+      </Droppable>
     </div>
   )
 }
