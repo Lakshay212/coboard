@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { loginUser } from '../api/auth'
 import { useNavigate } from 'react-router-dom'
+import Navbar from '../components/Navbar'
+import '../styles/login.css'
 
 function Login() {
   const [email, setEmail] = useState('')
@@ -28,20 +30,23 @@ const goSignup = async () => {
 }
 
   return (
-    <div>
-        <h1>LogIn</h1>
-        <div>
-            <input type='email' placeholder='Enter your Email' value={email} onChange={(e)=> setEmail(e.target.value)}></input>
-        </div>
-        <div>
-            <input type='password'  placeholder='Enter your Password' value={password} onChange={(e)=> setPassword(e.target.value)}></input>
-        </div>
-        <div>
-            <button onClick={handleSubmit}>Log In</button>
-        </div>
-        <div>
-          <a onClick={goSignup}>Have no account</a>
-        </div>
+    <div className='body'>
+      
+      <div className='holder'>
+          <h1 className='heading1'>LogIn</h1>
+          <div>
+              <input type='email' className='textInputL' placeholder='Enter your Email' value={email} onChange={(e)=> setEmail(e.target.value)}></input>
+          </div>
+          <div>
+              <input type='password'  className='textInputL' placeholder='Enter your Password' value={password} onChange={(e)=> setPassword(e.target.value)}></input>
+          </div>
+          <div>
+              <button className="SubmitButton" onClick={handleSubmit}>Log In</button>
+          </div>
+          <div className='NoAccount'>
+            <p>Don't have an account? <span onClick={() => navigate('/signup')} style={{cursor:'pointer', color:'blue'}}>Sign up</span></p>
+          </div>
+      </div>
     </div>
   )
 }
